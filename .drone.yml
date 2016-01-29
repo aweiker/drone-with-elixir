@@ -1,0 +1,6 @@
+build:
+  image: bitwalker/alpine-elixir-phoenix:2.0
+  commands:
+    - mix do deps.get, deps.compile
+    - MIX_ENV=test mix do test
+    - MIX_ENV=prod mix do compile

@@ -1,6 +1,24 @@
 build:
   image: bitwalker/alpine-elixir-phoenix:2.0
   commands:
-    - mix do deps.get, deps.compile
-    - MIX_ENV=test mix do test
-    - MIX_ENV=prod mix do compile
+    - scripts/ci/install_local_dependencies.sh
+    - scripts/ci/execute_tests.sh
+    - scripts/ci/generate_secrets.sh
+    - scripts/ci/build_release.sh
+  environment:
+    - SECRET_KEY_BASE=$$SECRET_KEY_BASE
+
+cache:
+  mount:
+    - deps
+    - node_modules
+
+publish:
+  docker:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASS
+    email: $$DOCKER_EMAIL
+    repo: drone-demos/drone-with-elixir
+    tag:
+      - latest
+      - "0.0.$$BUILD_NUMBER"

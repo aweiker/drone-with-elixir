@@ -3,6 +3,11 @@
 /db
 /deps
 /*.ez
+/rel
+
+#Drone stuff
+secrets.yml
+.drone.sec.yml
 
 # Generate on crash by the VM
 erl_crash.dump

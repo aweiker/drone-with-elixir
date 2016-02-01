@@ -4,3 +4,14 @@ build:
     - mix do deps.get, deps.compile
     - mix do test
     - MIX_ENV=prod mix do compile
+
+publish:
+  docker:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASS
+    email: $$DOCKER_EMAIL
+    repo: dronedemos/drone-with-elixir
+    tag: "latest"
+    when:
+      repo: drone-demos/drone-with-elixir
+      branch: master

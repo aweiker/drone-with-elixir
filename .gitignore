@@ -4,6 +4,9 @@
 /deps
 /*.ez
 
+# Drone stuff
+secrets.yml
+
 # Generate on crash by the VM
 erl_crash.dump
 

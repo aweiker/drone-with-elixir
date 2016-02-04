@@ -1,5 +1,6 @@
 # Getting Started
-
+This is a brief tour on what is required to make a Phoenix application
+buildable through Drone and published as a minimal docker image.
 
 ### .drone.sec.yml template
 
@@ -31,7 +32,7 @@ CMD trap exit TERM; /$APP_NAME/bin/$APP_NAME foreground & wait
 Update the config so that phoenix will run the server on startup, this can be
 accomplished by adding `server: true` to the call to `config`
 
-For exmaple:
+For example:
 ```elixir
 config :hello_phoenix, HelloPhoenix.Endpoint,
   http: [port: {:system, "PORT"}],
@@ -40,14 +41,15 @@ config :hello_phoenix, HelloPhoenix.Endpoint,
   server: true
 ```
 
-## config/prod.secret.exs
+## config/prod.secret.exs.tpl
 This file will need to be automatically generated during image build time as
 this key is used to protect your production instance.
 
 - [ ]  Is it possible to use an environment variable for this?
 
-Here is an example of the tempalte for generating this file. Refer to the build
-steps in [.drone.yml]|(https://github.com/drone-demos/drone-with-elixir/blob/master/.drone.yml)
+Here is an example of the template for generating this file. Refer to the build
+steps in [.drone.yml](https://github.com/drone-demos/drone-with-elixir/blob/master/.drone.yml)
+in particular the [scripts/ci/generate\_secrets.sh](https://github.com/drone-demos/drone-with-elixir/blob/master/scripts/ci/generate_secrets.sh) file.
 
 ```elixir
 use Mix.Config
@@ -110,4 +112,12 @@ publish:
       - latest
       - "0.0.$$BUILD_NUMBER"
 ```
+
+# Common Issues
+All scripts need the execute permission in order to run
+```bash
+chmod +x scripts/ci/*.sh
+```
+
+
 

@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir-phoenix:2.0
+FROM aweiker/alpine-elixir:1.2.1
 LABEL Description="Simple Hello World example of Drone.IO creating a Phoenix Application"
 
 ENV PORT=4000 MIX_ENV=prod

@@ -45,7 +45,7 @@ config :hello_phoenix, HelloPhoenix.Endpoint,
 This file will need to be automatically generated during image build time as
 this key is used to protect your production instance.
 
-- [ ]  Is it possible to use an environment variable for this?
+- [ ]  Is it possible to use an environment variable for this? #1
 
 Here is an example of the template for generating this file. Refer to the build
 steps in [.drone.yml](https://github.com/drone-demos/drone-with-elixir/blob/master/.drone.yml)

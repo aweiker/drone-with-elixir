@@ -49,7 +49,7 @@ this key is used to protect your production instance.
 Here is an example of the tempalte for generating this file. Refer to the build
 steps in [.drone.yml]|(https://github.com/drone-demos/drone-with-elixir/blob/master/.drone.yml)
 
-```
+```elixir
 use Mix.Config
 config :hello_phoenix, HelloPhoenix.Endpoint,
   secret_key_base: "SECRET_KEY_BASE"
@@ -84,7 +84,7 @@ supporting script files will need to be copied over.
 
 **ANYTIME THIS FILE IS CHANGED, YOU WILL NEED TO REGENERATE `.drone.sec.yml`**
 
-```
+```yaml
 build:
   image: bitwalker/alpine-elixir-phoenix:2.0
   commands:

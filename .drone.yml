@@ -23,3 +23,12 @@ publish:
     when:
       repo: drone-demos/drone-with-elixir
       branch: master
+  docker:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASS
+    email: $$DOCKER_EMAIL
+    repo: aweiker/drone-with-elixir
+    tag: "latest"
+    when:
+      repo: aweiker/drone-with-elixir
+      branch: master
